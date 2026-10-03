@@ -1,0 +1,29 @@
+{
+  "data": {
+    "website": {
+      "url": "https://my-portfolio-d6od.vercel.app/",
+      "domain": "my-portfolio-d6od.vercel.app",
+      "crawledAt": "2026-10-03T07:14:54.570Z"
+    },
+    "pages": [
+      {
+        "url": "https://my-portfolio-d6od.vercel.app/",
+        "title": "Portfolio",
+        "meta": { "description": "", "canonical": null },
+        "headings": { "h1": [], "h2": [], "h3": [] },
+        "content": { "paragraphs": [] },
+        "links": [],
+        "images": []
+      }
+    ],
+    "summary": {
+      "pagesDiscovered": 1,
+      "pagesCrawled": 1,
+      "pagesFailed": 0,
+      "totalLinks": 0,
+      "totalImages": 0
+    }
+  },
+  "createdAt": 1791011694570,
+  "expiresAt": 1791098094570
+}
