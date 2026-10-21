@@ -14,10 +14,10 @@ const app = express();
 app.use(helmet());
 
 const allowedOrigins = (
-  process.env.CORS_ORIGIN ?? "http://localhost:3000,http://localhost:3001"
+  process.env.CORS_ORIGIN ?? "https://data-lens-ruby.vercel.app/"
 )
   .split(",")
-  .map((origin) => origin.trim())
+  .map((origin) => origin.trim().replace(/\/+$/, ""))
   .filter(Boolean);
 
 app.use(

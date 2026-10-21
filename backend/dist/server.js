@@ -13,9 +13,9 @@ const image_routes_1 = __importDefault(require("./routes/image.routes"));
 const json_edit_routes_1 = __importDefault(require("./routes/json-edit.routes"));
 const app = (0, express_1.default)();
 app.use((0, helmet_1.default)());
-const allowedOrigins = (process.env.CORS_ORIGIN ?? "http://localhost:3000,http://localhost:3001")
+const allowedOrigins = (process.env.CORS_ORIGIN ?? "https://data-lens-ruby.vercel.app/")
     .split(",")
-    .map((origin) => origin.trim())
+    .map((origin) => origin.trim().replace(/\/+$/, ""))
     .filter(Boolean);
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
