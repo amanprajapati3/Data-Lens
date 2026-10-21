@@ -1,5 +1,6 @@
 import PageBanner from "@/component/layout/PageBanner";
 import LegalContent, { type LegalSection } from "@/component/legal/LegalContent";
+import { createPageMetadata } from "@/lib/seo";
 
 const sections: LegalSection[] = [
   {
@@ -44,16 +45,19 @@ const sections: LegalSection[] = [
   },
 ];
 
-export const metadata = {
-  title: "Disclaimer | Data Lens",
-  description: "Important disclaimers about the data extracted using Data Lens.",
-};
+export const metadata = createPageMetadata({
+  title: "Disclaimer",
+  description:
+    "Understand the limitations of automated website and image extraction and the outputs provided by Data Lens.",
+  path: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
   return (
     <>
       <PageBanner
         title="Disclaimer"
+        currentPath="/disclaimer"
         subtitle="Please review this disclaimer to understand the limitations of the data provided by Data Lens."
         image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
         crumbs={[

@@ -6,13 +6,16 @@ interface ResultHeaderProps {
   mode: "url" | "image";
   title?: string;
   source?: string;
+  compact?: boolean;
 }
 
 export default function ResultHeader({
   mode,
   title,
   source,
+  compact = false,
 }: ResultHeaderProps) {
+  const Heading = compact ? "h2" : "h1";
   const isUrlMode = mode === "url";
 
   const heading = title
@@ -35,9 +38,9 @@ export default function ResultHeader({
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
+            <Heading className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
               {heading}
-            </h2>
+            </Heading>
             <p className="text-sm text-gray-600 dark:text-gray-400 sm:text-base">
               {description}
             </p>

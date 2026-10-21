@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FaImage, FaLink, FaShieldHalved } from "react-icons/fa6";
 import ScrollReveal from "@/component/shared/ScrollReveal";
 
@@ -8,10 +9,12 @@ export default function HomeCta() {
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-zinc-900 px-6 py-12 text-white shadow-xl shadow-blue-950/15 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
         
         {/* Full-width & Full-height Background Image */}
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1650327034273-d4df5b99f854?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-          alt="Data Extractor Analytics Background"
-          className="absolute inset-0 h-full w-full object-cover "
+          alt=""
+          fill
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          className="object-cover"
         />
 
         {/* Minimal Gradient Overlay for Content Readability */}

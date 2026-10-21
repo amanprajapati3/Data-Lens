@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from "next/image";
 import PageBanner from "@/component/layout/PageBanner";
 import { 
   FaXTwitter, 
@@ -8,7 +9,14 @@ import {
 } from 'react-icons/fa6';
 import { FaRegCheckCircle } from "react-icons/fa";
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createPageMetadata } from "@/lib/seo";
 
+export const metadata = createPageMetadata({
+  title: "About",
+  description:
+    "Learn about Data Lens tools for website and image extraction, JSON editing, data conversion, and image and PDF file workflows.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -16,6 +24,7 @@ export default function AboutPage() {
       {/* 1. BREADCRUMB BANNER */}
       <PageBanner
         title="About Our Extractor Platform"
+        currentPath="/about"
         image="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
         crumbs={[
           { label: "Home", href: "/" },
@@ -54,10 +63,12 @@ export default function AboutPage() {
             distance={18}
             className="relative rounded-2xl overflow-hidden shadow-2xl group"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" 
-              alt="Data Extraction Analytics" 
-              className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
+            <Image
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+              alt="Data analytics dashboard illustrating structured information"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">

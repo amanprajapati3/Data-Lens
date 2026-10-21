@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createBreadcrumbJsonLd, serializeJsonLd } from "@/lib/seo";
 
 export interface Crumb {
   label: string;
@@ -10,6 +11,7 @@ interface PageBannerProps {
   title: string;
   subtitle?: string;
   crumbs: Crumb[];
+  currentPath: string;
   image?: string;
 }
 
@@ -17,9 +19,18 @@ export default function PageBanner({
   title,
   subtitle,
   crumbs,
+  currentPath,
 }: PageBannerProps) {
+  const breadcrumbJsonLd = createBreadcrumbJsonLd(crumbs, currentPath);
+
   return (
     <section className="relative overflow-hidden bg-zinc-900 px-4 py-28 text-white sm:px-6 sm:py-40 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(breadcrumbJsonLd),
+        }}
+      />
       <video
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay

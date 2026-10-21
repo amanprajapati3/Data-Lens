@@ -1,5 +1,13 @@
 import JsonCsvConverter from "@/component/converters/JsonCsvConverter";
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "JSON to CSV Converter",
+  description:
+    "Convert JSON data to CSV or CSV data to JSON in your browser. Copy or download the converted result.",
+  path: "/json-csv",
+});
 
 export default function JsonCsvPage() {
   return (
@@ -15,9 +23,9 @@ export default function JsonCsvPage() {
             <span className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-500/20 dark:bg-emerald-950 dark:text-emerald-300">
               Converter Tool
             </span>
-            <h2 className="text-3xl font-bold tracking-tight">
+            <h1 className="text-3xl font-bold tracking-tight">
               Convert between JSON and CSV
-            </h2>
+            </h1>
             <p className="max-w-2xl text-zinc-600 dark:text-zinc-400">
               Paste your data on the left, pick a direction and press
               Convert. The result appears on the right, ready to copy or

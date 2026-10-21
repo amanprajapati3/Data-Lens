@@ -1,16 +1,23 @@
 import React from 'react';
+import Image from "next/image";
 import PageBanner from "@/component/layout/PageBanner";
 import { 
-  Zap, 
   ShieldCheck, 
   Cpu, 
   Code2, 
-  Check, 
   Layers, 
   BarChart3, 
   Clock 
 } from 'lucide-react';
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Why Choose Us",
+  description:
+    "Explore Data Lens features for extracting website and image data into structured results with a straightforward workflow.",
+  path: "/choose-us",
+});
 
 export default function ChooseUsPage() {
   return (
@@ -18,6 +25,7 @@ export default function ChooseUsPage() {
       {/* 1. BREADCRUMB BANNER */}
       <PageBanner
         title="Why Choose Our Data Extractor"
+        currentPath="/choose-us"
         image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
         crumbs={[
           { label: "Home", href: "/" },
@@ -96,10 +104,12 @@ export default function ChooseUsPage() {
             distance={18}
             className="lg:col-span-5 relative rounded-2xl overflow-hidden shadow-2xl"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80" 
-              alt="Data Infrastructure" 
-              className="w-full h-[420px] object-cover"
+            <Image
+              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80"
+              alt="Abstract digital data infrastructure"
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">

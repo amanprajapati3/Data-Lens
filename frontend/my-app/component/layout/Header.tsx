@@ -70,9 +70,9 @@ export default function Header() {
               <Database className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-base font-semibold text-gray-900 dark:text-gray-100 sm:text-lg">
+              <span className="text-base font-semibold text-gray-900 dark:text-gray-100 sm:text-lg">
                 Data Lens
-              </h1>
+              </span>
             </div>
             <span className="ml-2 hidden rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 sm:inline-flex">
               Free Tool

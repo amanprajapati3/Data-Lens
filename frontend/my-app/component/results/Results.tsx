@@ -17,6 +17,7 @@ import ResultSection from "./ResultSection";
 
 interface ResultsProps {
   result: ExtractionResult;
+  compact?: boolean;
 }
 
 function isUrlResult(result: ExtractionResult): result is UrlExtractionResult {
@@ -40,7 +41,7 @@ function getWebsiteDataFromCrawl(data: CrawlData): WebsiteData | null {
   return null;
 }
 
-export default function Results({ result }: ResultsProps) {
+export default function Results({ result, compact = false }: ResultsProps) {
   /*
    * Local copy so edits from the JSON viewers
    * (manual or with AI) can be saved and flow
@@ -101,7 +102,7 @@ export default function Results({ result }: ResultsProps) {
 
     return (
       <div className="flex flex-col gap-6">
-        <ResultHeader mode="url" source={sourceUrl} />
+        <ResultHeader mode="url" source={sourceUrl} compact={compact} />
         <DownloadActions jobId={localResult.jobId} />
         {websiteData && websiteData.pages && (
           <ResultSection
@@ -124,7 +125,7 @@ export default function Results({ result }: ResultsProps) {
 
     return (
       <div className="flex flex-col gap-6">
-        <ResultHeader mode="image" source={source} />
+        <ResultHeader mode="image" source={source} compact={compact} />
         <DownloadActions data={localResult} filename="image-extraction" />
         <ResultSection
           title="Extracted Data"

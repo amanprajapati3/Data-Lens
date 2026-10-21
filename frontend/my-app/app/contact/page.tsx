@@ -1,7 +1,15 @@
 import React from 'react';
 import PageBanner from "@/component/layout/PageBanner";
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Contact",
+  description:
+    "Contact Data Lens for questions or feedback about website extraction, image extraction, and its online data tools.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -9,6 +17,7 @@ export default function ContactPage() {
       {/* 1. BREADCRUMB BANNER */}
       <PageBanner
         title="Get in Touch With Us"
+        currentPath="/contact"
         image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
         crumbs={[
           { label: "Home", href: "/" },
@@ -112,16 +121,18 @@ export default function ContactPage() {
             <form className="space-y-4" >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Your Name</label>
+                  <label htmlFor="contact-name" className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Your Name</label>
                   <input 
+                    id="contact-name"
                     type="text" 
                     placeholder="John Doe"  required
                     className="w-full px-4 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" 
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Your Email</label>
+                  <label htmlFor="contact-email" className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Your Email</label>
                   <input 
+                    id="contact-email"
                     type="email" 
                     placeholder="john@example.com" required
                     className="w-full px-4 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" 
@@ -130,8 +141,8 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Subject / Extractor Type</label>
-                <select className="w-full px-4 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <label htmlFor="contact-subject" className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Subject / Extractor Type</label>
+                <select id="contact-subject" className="w-full px-4 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
                   <option>URL Scraping API</option>
                   <option>Image OCR Data Extraction</option>
                   <option>Enterprise Custom Integration</option>
@@ -140,8 +151,9 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Message</label>
+                <label htmlFor="contact-message" className="block text-xs font-semibold mb-1 text-zinc-700 dark:text-zinc-300">Message</label>
                 <textarea 
+                  id="contact-message"
                   rows={4} required
                   placeholder="Tell us about your extraction requirements..." 
                   className="w-full px-4 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"

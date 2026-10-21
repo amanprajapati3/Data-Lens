@@ -1,5 +1,6 @@
 import PageBanner from "@/component/layout/PageBanner";
 import LegalContent, { type LegalSection } from "@/component/legal/LegalContent";
+import { createPageMetadata } from "@/lib/seo";
 
 const sections: LegalSection[] = [
   {
@@ -52,16 +53,19 @@ const sections: LegalSection[] = [
   },
 ];
 
-export const metadata = {
-  title: "Terms & Conditions | Data Lens",
-  description: "The terms that govern your use of the Data Lens service.",
-};
+export const metadata = createPageMetadata({
+  title: "Terms and Conditions",
+  description:
+    "Review the terms for using Data Lens website extraction, image extraction, JSON editing, conversion, and compression tools.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
     <>
       <PageBanner
         title="Terms & Conditions"
+        currentPath="/terms"
         subtitle="Please read these terms carefully before using Data Lens. They set out the rules for using our service."
         image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1600&q=80"
         crumbs={[

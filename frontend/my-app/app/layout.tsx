@@ -6,6 +6,7 @@ import Header from "@/component/layout/Header";
 import Footer from "@/component/layout/Footer";
 import SmoothScroll from "@/component/shared/SmoothScroll";
 import ThemeInitializer from "@/component/shared/ThemeInitializer";
+import { SITE_URL } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,8 +19,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Data Lens",
-  description: "Extract Json from Image or URL",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Data Lens | Web, Image & File Tools",
+    template: "%s | Data Lens",
+  },
+  description:
+    "Extract structured data from websites and images, edit JSON, convert JSON and CSV, convert images and PDFs, and compress images with Data Lens.",
+  openGraph: {
+    type: "website",
+    siteName: "Data Lens",
+    locale: "en_US",
+    title: "Data Lens | Web, Image & File Tools",
+    description:
+      "Tools for website and image extraction, JSON editing, data conversion, and image and PDF utilities.",
+    url: "/",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Data Lens | Web, Image & File Tools",
+    description:
+      "Tools for website and image extraction, JSON editing, data conversion, and image and PDF utilities.",
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

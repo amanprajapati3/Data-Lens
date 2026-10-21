@@ -1,11 +1,13 @@
 import ImageCompressor from "@/component/converters/ImageCompressor";
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Image Compressor | Data Lens",
+export const metadata = createPageMetadata({
+  title: "Image Compressor",
   description:
-    "Compress one or more images to a target file size with preview and download options.",
-};
+    "Compress images to a target file size in your browser, preview each result, and download files individually or as a ZIP.",
+  path: "/image-compress",
+});
 
 export default function ImageCompressPage() {
   return (
@@ -21,9 +23,9 @@ export default function ImageCompressPage() {
             <span className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-500/20 dark:bg-emerald-950 dark:text-emerald-300">
               Image Tool
             </span>
-            <h2 className="text-3xl font-bold tracking-tight">
+            <h1 className="text-3xl font-bold tracking-tight">
               Compress images to fit your needs
-            </h2>
+            </h1>
             <p className="max-w-2xl text-zinc-600 dark:text-zinc-400">
               Choose a target size, preview each result, and download images
               separately or as a ZIP. Your files are processed on your device.

@@ -53,7 +53,7 @@ export default function ExtractionWorkspace({
   const content = result ? (
     <div className="flex flex-col gap-6">
       {resetButton}
-      <Results result={result} />
+      <Results result={result} compact={embedded} />
     </div>
   ) : (
     <Extractor

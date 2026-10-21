@@ -1,5 +1,6 @@
 import PageBanner from "@/component/layout/PageBanner";
 import LegalContent, { type LegalSection } from "@/component/legal/LegalContent";
+import { createPageMetadata } from "@/lib/seo";
 
 const sections: LegalSection[] = [
   {
@@ -53,16 +54,19 @@ const sections: LegalSection[] = [
   },
 ];
 
-export const metadata = {
-  title: "Privacy Policy | Data Lens",
-  description: "How Data Lens collects, uses, and protects your information.",
-};
+export const metadata = createPageMetadata({
+  title: "Privacy Policy",
+  description:
+    "Read how Data Lens handles information submitted to its website and image extraction tools and how browser-based tools process your data.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
     <>
       <PageBanner
         title="Privacy Policy"
+        currentPath="/privacy"
         subtitle="Your privacy matters. This policy explains what we collect, how we use it, and the choices you have."
         image="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
         crumbs={[

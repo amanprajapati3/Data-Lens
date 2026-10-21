@@ -1,11 +1,13 @@
 import ImageConverter from "@/component/converters/ImageConverter";
 import ScrollReveal from "@/component/shared/ScrollReveal";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Image & PDF Converter | Data Lens",
+export const metadata = createPageMetadata({
+  title: "Image and PDF Converter",
   description:
     "Convert images between formats, combine images into a PDF, or render PDF pages as images in your browser.",
-};
+  path: "/image-convert",
+});
 
 export default function ImageConvertPage() {
   return (
@@ -21,9 +23,9 @@ export default function ImageConvertPage() {
             <span className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-500/20 dark:bg-emerald-950 dark:text-emerald-300">
               Image Tool
             </span>
-            <h2 className="text-3xl font-bold tracking-tight">
+            <h1 className="text-3xl font-bold tracking-tight">
               Convert images and PDFs
-            </h2>
+            </h1>
             <p className="max-w-2xl text-zinc-600 dark:text-zinc-400">
               Convert image formats, combine multiple images into a PDF, or
               save PDF pages as individual images—all directly in your browser.
