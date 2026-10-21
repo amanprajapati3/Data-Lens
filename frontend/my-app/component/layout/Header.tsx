@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Database,
@@ -27,9 +28,18 @@ const TOOL_LINKS = [
 const navItemClass =
   "nav-hover rounded-md px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300";
 
+const activeNavItemClass =
+  "bg-black text-white dark:bg-white dark:text-gray-800";
+
 export default function Header() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExtractOpen, setMobileExtractOpen] = useState(false);
+  const isExtractorActive = pathname === "/data-extract";
+
+  const isActivePage = (href: string) => pathname === href;
+  const getNavItemClass = (isActive: boolean) =>
+    `${navItemClass} ${isActive ? activeNavItemClass : ""}`;
 
   useEffect(() => {
     if (!mobileOpen) {
@@ -73,15 +83,20 @@ export default function Header() {
             className="hidden flex-1 items-center justify-center gap-1 lg:flex"
             aria-label="Main navigation"
           >
-            <Link href="/" className={navItemClass}>
+            <Link
+              href="/"
+              className={getNavItemClass(isActivePage("/"))}
+              aria-current={isActivePage("/") ? "page" : undefined}
+            >
               Home
             </Link>
 
             <div className="group relative">
               <button
                 type="button"
-                className={`${navItemClass} cursor-pointer inline-flex items-center gap-1.5`}
+                className={`${getNavItemClass(isExtractorActive)} cursor-pointer inline-flex items-center gap-1.5`}
                 aria-haspopup="true"
+                aria-current={isExtractorActive ? "page" : undefined}
               >
                 Data Extractor
                 <ChevronDown className="h-4 w-4 transition-transform duration-300 ease-out group-hover:rotate-180 group-focus-within:rotate-180" />
@@ -105,7 +120,12 @@ export default function Header() {
             </div>
 
             {TOOL_LINKS.map(({ label, href }) => (
-              <Link key={href} href={href} className={navItemClass}>
+              <Link
+                key={href}
+                href={href}
+                className={getNavItemClass(isActivePage(href))}
+                aria-current={isActivePage(href) ? "page" : undefined}
+              >
                 {label}
               </Link>
             ))}
@@ -166,7 +186,8 @@ export default function Header() {
               <Link
                 href="/"
                 onClick={() => setMobileOpen(false)}
-                className={`${navItemClass} px-3 py-2.5`}
+                className={`${getNavItemClass(isActivePage("/"))} px-3 py-2.5`}
+                aria-current={isActivePage("/") ? "page" : undefined}
               >
                 Home
               </Link>
@@ -176,7 +197,8 @@ export default function Header() {
                   <Link
                     href="/data-extract"
                     onClick={() => setMobileOpen(false)}
-                    className={`${navItemClass} flex-1 px-3 py-2.5`}
+                    className={`${getNavItemClass(isExtractorActive)} flex-1 px-3 py-2.5`}
+                    aria-current={isExtractorActive ? "page" : undefined}
                   >
                     Data Extractor
                   </Link>
@@ -224,7 +246,8 @@ export default function Header() {
                   key={href}
                   href={href}
                   onClick={() => setMobileOpen(false)}
-                  className={`${navItemClass} px-3 py-2.5`}
+                  className={`${getNavItemClass(isActivePage(href))} px-3 py-2.5`}
+                  aria-current={isActivePage(href) ? "page" : undefined}
                 >
                   {label}
                 </Link>
