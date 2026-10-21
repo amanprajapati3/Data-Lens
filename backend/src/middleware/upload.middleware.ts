@@ -43,7 +43,7 @@ const upload = multer({
     parts: 12,
   },
 
-  fileFilter: (_req, file, callback) => {
+  fileFilter: (_req: Request, file: Express.Multer.File, callback: multer.FileFilterCallback) => {
     /*
      * Normalise the type because some
      * clients send "image/jpg".

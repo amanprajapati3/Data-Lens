@@ -1,3 +1,4 @@
+import type { ApiSuccessResponse } from "@/types/api";
 import type { ApiResponse } from "@/types/api";
 import { isApiError } from "@/types/api";
 import type {
@@ -97,6 +98,30 @@ export async function extractImage(file: File): Promise<ImageExtractionData> {
       body: formData,
     },
     "Unable to extract data from the image",
+  );
+
+  return response.data;
+}
+
+/*
+ * POST /api/json-edit
+ *
+ * Sends the current JSON document plus a plain
+ * language instruction to Gemini and returns the
+ * edited document.
+ */
+export async function editJsonWithAi(
+  json: unknown,
+  instruction: string,
+): Promise<unknown> {
+  const response = await request<ApiSuccessResponse<unknown>>(
+    "/api/json-edit",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ json, instruction }),
+    },
+    "Unable to edit the JSON with AI",
   );
 
   return response.data;

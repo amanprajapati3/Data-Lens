@@ -19,6 +19,7 @@ interface ExtractorProps {
   extractFromUrl: () => Promise<void>;
   extractFromImage: () => Promise<void>;
   clearError: () => void;
+  compact?: boolean;
 }
 
 export default function Extractor({
@@ -33,9 +34,14 @@ export default function Extractor({
   extractFromUrl,
   extractFromImage,
   clearError,
+  compact = false,
 }: ExtractorProps) {
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] w-full items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+    <div
+      className={`flex w-full items-center justify-center ${
+        compact ? "py-6 sm:py-8" : "min-h-[calc(100vh-4rem)] px-4 py-8 sm:px-6 lg:px-8"
+      }`}
+    >
       <div className="flex w-full max-w-3xl flex-col gap-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
         <div className="flex flex-col gap-2 text-center sm:text-left">
           <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">

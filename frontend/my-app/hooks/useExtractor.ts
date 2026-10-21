@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 
 import { crawlWebsite, extractImage } from "@/lib/api";
+import { saveLastExtraction } from "@/lib/last-extraction";
 import type { ExtractionMode, ExtractionResult } from "@/types/extractor";
 
 const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024;
@@ -61,6 +62,8 @@ export function useExtractor() {
     try {
       const response = await crawlWebsite(target);
 
+      saveLastExtraction("url", response.data);
+
       setResult({
         mode: "url",
         jobId: response.jobId,
@@ -98,6 +101,8 @@ export function useExtractor() {
 
     try {
       const data = await extractImage(selectedFile);
+
+      saveLastExtraction("image", data);
 
       setResult({ mode: "image", data });
       setJobId(null);
