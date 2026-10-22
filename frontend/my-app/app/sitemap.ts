@@ -13,6 +13,7 @@ const PUBLIC_PAGES = [
   "/json-csv",
   "/privacy",
   "/terms",
+  "/zip-tool",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

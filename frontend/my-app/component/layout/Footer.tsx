@@ -16,7 +16,6 @@ const SOCIAL_LINKS = [
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Data Extract", href: "/data-extract" },
   { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
   { label: "Choose Us", href: "/choose-us" },

@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     template: "%s | Data Lens",
   },
   description:
-    "Extract structured data from websites and images, edit JSON, convert JSON and CSV, convert images and PDFs, and compress images with Data Lens.",
+    "Extract structured data from websites and images, edit JSON, convert JSON and CSV, convert images and PDFs, compress images, and manage ZIP files with Data Lens.",
   openGraph: {
     type: "website",
     siteName: "Data Lens",
     locale: "en_US",
     title: "Data Lens | Web, Image & File Tools",
     description:
-      "Tools for website and image extraction, JSON editing, data conversion, and image and PDF utilities.",
+      "Tools for website and image extraction, JSON editing, data conversion, image and PDF utilities, and ZIP files.",
     url: "/",
     images: ["/opengraph-image"],
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Data Lens | Web, Image & File Tools",
     description:
-      "Tools for website and image extraction, JSON editing, data conversion, and image and PDF utilities.",
+      "Tools for website and image extraction, JSON editing, data conversion, image and PDF utilities, and ZIP files.",
     images: ["/opengraph-image"],
   },
   robots: {

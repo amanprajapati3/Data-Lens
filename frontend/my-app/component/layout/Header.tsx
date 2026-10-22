@@ -23,6 +23,7 @@ const TOOL_LINKS = [
   { label: "JSON ↔ CSV", href: "/json-csv" },
   { label: "Image Converter", href: "/image-convert" },
   { label: "Image Compress", href: "/image-compress" },
+  { label: "ZIP & Unzip", href: "/zip-tool" },
 ] as const;
 
 const navItemClass =
