@@ -104,6 +104,29 @@ export async function extractImage(file: File): Promise<ImageExtractionData> {
 }
 
 /*
+ * POST /api/ocr-extract
+ *
+ * Reads one image or rendered PDF page and returns structured
+ * Markdown that mirrors the layout of the document.
+ */
+export async function extractOcrText(file: File): Promise<string> {
+  const formData = new FormData();
+
+  formData.append("image", file);
+
+  const response = await request<ApiSuccessResponse<{ text: string }>>(
+    "/api/ocr-extract",
+    {
+      method: "POST",
+      body: formData,
+    },
+    "Unable to extract text from the document",
+  );
+
+  return response.data.text;
+}
+
+/*
  * POST /api/json-edit
  *
  * Sends the current JSON document plus a plain

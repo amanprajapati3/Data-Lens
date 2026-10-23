@@ -8,6 +8,7 @@ import crawlRoutes from "./routes/crawl.routes";
 import exportRoutes from "./routes/export.routes";
 import imageRoutes from "./routes/image.routes";
 import jsonEditRoutes from "./routes/json-edit.routes";
+import ocrRoutes from "./routes/ocr.routes";
 
 const app = express();
 
@@ -20,10 +21,26 @@ const allowedOrigins = (
   .map((origin) => origin.trim().replace(/\/+$/, ""))
   .filter(Boolean);
 
+/*
+ * Local development runs on a random
+ * localhost port, so any loopback origin is
+ * accepted while NODE_ENV is not production.
+ */
+const isDevelopment = process.env.NODE_ENV !== "production";
+const localOriginPattern =
+  /^https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/;
+
+function isAllowedOrigin(origin: string) {
+  return (
+    allowedOrigins.includes(origin) ||
+    (isDevelopment && localOriginPattern.test(origin))
+  );
+}
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || isAllowedOrigin(origin)) {
         callback(null, true);
         return;
       }
@@ -78,6 +95,17 @@ app.use(
 app.use(
   "/api/image-extract",
   imageRoutes
+);
+
+/*
+ * OCR text extraction
+ *
+ * Also multipart/form-data, so it is
+ * mounted next to the image route.
+ */
+app.use(
+  "/api/ocr-extract",
+  ocrRoutes
 );
 
 /*

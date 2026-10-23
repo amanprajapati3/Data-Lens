@@ -11,15 +11,27 @@ const crawl_routes_1 = __importDefault(require("./routes/crawl.routes"));
 const export_routes_1 = __importDefault(require("./routes/export.routes"));
 const image_routes_1 = __importDefault(require("./routes/image.routes"));
 const json_edit_routes_1 = __importDefault(require("./routes/json-edit.routes"));
+const ocr_routes_1 = __importDefault(require("./routes/ocr.routes"));
 const app = (0, express_1.default)();
 app.use((0, helmet_1.default)());
 const allowedOrigins = (process.env.CORS_ORIGIN ?? "https://data-lens-ruby.vercel.app/")
     .split(",")
     .map((origin) => origin.trim().replace(/\/+$/, ""))
     .filter(Boolean);
+/*
+ * Local development runs on a random
+ * localhost port, so any loopback origin is
+ * accepted while NODE_ENV is not production.
+ */
+const isDevelopment = process.env.NODE_ENV !== "production";
+const localOriginPattern = /^https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/;
+function isAllowedOrigin(origin) {
+    return (allowedOrigins.includes(origin) ||
+        (isDevelopment && localOriginPattern.test(origin)));
+}
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
+        if (!origin || isAllowedOrigin(origin)) {
             callback(null, true);
             return;
         }
@@ -56,6 +68,13 @@ app.use("/api/export", export_routes_1.default);
  * which express.json() does not parse.
  */
 app.use("/api/image-extract", image_routes_1.default);
+/*
+ * OCR text extraction
+ *
+ * Also multipart/form-data, so it is
+ * mounted next to the image route.
+ */
+app.use("/api/ocr-extract", ocr_routes_1.default);
 /*
  * AI JSON editing
  *

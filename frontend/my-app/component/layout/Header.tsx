@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Archive,
   ChevronDown,
+  Code2,
   Database,
+  Eraser,
+  FileArchive,
   Image as ImageIcon,
   Link2,
   Menu,
+  ScanText,
   X,
 } from "lucide-react";
 import { GrGithub } from "react-icons/gr";
@@ -23,7 +28,14 @@ const TOOL_LINKS = [
   { label: "JSON ↔ CSV", href: "/json-csv" },
   { label: "Image Converter", href: "/image-convert" },
   { label: "Image Compress", href: "/image-compress" },
-  { label: "ZIP & Unzip", href: "/zip-tool" },
+] as const;
+
+const MORE_LINKS = [
+  { label: "ZIP & Unzip", href: "/zip-tool", icon: Archive },
+  { label: "OCR Extractor", href: "/ocr-extractor", icon: ScanText },
+  { label: "PDF Compressor", href: "/pdf-compressor", icon: FileArchive },
+  { label: "Markdown ↔ HTML", href: "/markdown-html", icon: Code2 },
+  { label: "Image BG Removal", href: "/image-bg-removal", icon: Eraser },
 ] as const;
 
 const navItemClass =
@@ -37,6 +49,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExtractOpen, setMobileExtractOpen] = useState(false);
   const isExtractorActive = pathname === "/data-extract";
+  const isMoreActive = MORE_LINKS.some(({ href }) => pathname === href);
 
   const isActivePage = (href: string) => pathname === href;
   const getNavItemClass = (isActive: boolean) =>
@@ -130,6 +143,37 @@ export default function Header() {
                 {label}
               </Link>
             ))}
+
+            <div className="group relative">
+              <button
+                type="button"
+                className={`${getNavItemClass(isMoreActive)} cursor-pointer inline-flex items-center gap-1.5`}
+                aria-haspopup="true"
+                aria-current={isMoreActive ? "page" : undefined}
+              >
+                More
+                <ChevronDown className="h-4 w-4 transition-transform duration-300 ease-out group-hover:rotate-180 group-focus-within:rotate-180" />
+              </button>
+              <div className="invisible absolute left-1/2 top-full z-50 mt-2 w-60 -translate-x-1/2 translate-y-2 opacity-0 transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                <div className="rounded-xl border border-gray-200 bg-white p-2 shadow-xl dark:border-gray-700 dark:bg-gray-900">
+                  {MORE_LINKS.map(({ label, href, icon: Icon }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 ${
+                        isActivePage(href) ? activeNavItemClass : ""
+                      }`}
+                      aria-current={isActivePage(href) ? "page" : undefined}
+                    >
+                      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-300">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
@@ -250,6 +294,23 @@ export default function Header() {
                   className={`${getNavItemClass(isActivePage(href))} px-3 py-2.5`}
                   aria-current={isActivePage(href) ? "page" : undefined}
                 >
+                  {label}
+                </Link>
+              ))}
+
+              <p className="mt-2 px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                More
+              </p>
+
+              {MORE_LINKS.map(({ label, href, icon: Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`${getNavItemClass(isActivePage(href))} flex items-center gap-3 px-3 py-2.5`}
+                  aria-current={isActivePage(href) ? "page" : undefined}
+                >
+                  <Icon className="h-4 w-4" />
                   {label}
                 </Link>
               ))}
