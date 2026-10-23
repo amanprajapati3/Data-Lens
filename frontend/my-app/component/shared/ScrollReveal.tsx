@@ -66,45 +66,48 @@ function buildVariants(
   reduceMotion: boolean,
 ): Variants {
   if (reduceMotion) {
-    return { hidden: { opacity: 0.3 }, visible: { opacity: 1 } };
+    return {
+      hidden: { opacity: 0.3, x: 0, y: 0 },
+      visible: { opacity: 1, x: 0, y: 0 },
+    };
   }
 
   switch (direction) {
     case "down":
       return {
-        hidden: { opacity: 0.12, y: -distance, filter: "blur(6px)" },
-        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+        hidden: { opacity: 0.12, x: 0, y: -distance, filter: "blur(6px)" },
+        visible: { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
       };
 
     case "left":
       return {
-        hidden: { opacity: 0.12, x: distance, filter: "blur(6px)" },
-        visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+        hidden: { opacity: 0.12, x: distance, y: 0, filter: "blur(6px)" },
+        visible: { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
       };
 
     case "right":
       return {
-        hidden: { opacity: 0.12, x: -distance, filter: "blur(6px)" },
-        visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+        hidden: { opacity: 0.12, x: -distance, y: 0, filter: "blur(6px)" },
+        visible: { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
       };
 
     case "scale":
       return {
-        hidden: { opacity: 0.12, scale: 0.9, filter: "blur(6px)" },
-        visible: { opacity: 1, scale: 1, filter: "blur(0px)" },
+        hidden: { opacity: 0.12, x: 0, y: 0, scale: 0.9, filter: "blur(6px)" },
+        visible: { opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)" },
       };
 
     case "none":
       return {
-        hidden: { opacity: 0.12, filter: "blur(6px)" },
-        visible: { opacity: 1, filter: "blur(0px)" },
+        hidden: { opacity: 0.12, x: 0, y: 0, filter: "blur(6px)" },
+        visible: { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
       };
 
     case "up":
     default:
       return {
-        hidden: { opacity: 0.12, y: distance, filter: "blur(6px)" },
-        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+        hidden: { opacity: 0.12, x: 0, y: distance, filter: "blur(6px)" },
+        visible: { opacity: 1, x: 0, y: 0, filter: "blur(0px)" },
       };
   }
 }

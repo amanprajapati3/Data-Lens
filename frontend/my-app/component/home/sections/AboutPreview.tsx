@@ -23,9 +23,9 @@ export default function AboutPreview() {
   return (
     <section
       aria-labelledby="about-preview-title"
-      className="px-4 py-8 md:py-12 sm:px-6  lg:px-8 "
+      className="px-4 py-8 sm:px-6 md:py-12 lg:px-8"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
         <ScrollReveal
           as="div"
           direction="left"
@@ -38,7 +38,7 @@ export default function AboutPreview() {
           </span>
           <h2
             id="about-preview-title"
-            className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
+            className="mt-5 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
           >
             Make useful data easier to reach.
           </h2>
@@ -91,7 +91,7 @@ export default function AboutPreview() {
         >
           <div
             aria-hidden="true"
-            className="absolute -inset-5 rounded-[2rem] bg-blue-100/70 blur-2xl dark:bg-blue-950/30"
+            className="absolute -inset-4 rounded-[2rem] bg-blue-100/70 blur-2xl dark:bg-blue-950/30 sm:-inset-5"
           />
           <div className="relative rounded-3xl border border-zinc-200 bg-white p-5 shadow-xl shadow-zinc-900/5 dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
             <div className="flex items-center justify-between border-b border-zinc-100 pb-5 dark:border-zinc-800">
@@ -106,11 +106,11 @@ export default function AboutPreview() {
               </span>
             </div>
             <div className="mt-5 space-y-3">
-              <div className="flex items-center gap-3 rounded-xl bg-zinc-50 p-4 dark:bg-zinc-800/70">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600 shadow-sm dark:bg-zinc-900 dark:text-blue-300">
+              <div className="flex items-center gap-2 rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/70 sm:gap-3 sm:p-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600 shadow-sm dark:bg-zinc-900 dark:text-blue-300 sm:h-14 sm:w-14">
                   <FaGlobe aria-hidden="true" className="h-8 w-8"/>
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold">Website or image</p>
                   <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
                     Bring the source you need
@@ -118,9 +118,9 @@ export default function AboutPreview() {
                 </div>
                 <FaArrowRight
                   aria-hidden="true"
-                  className="ml-auto h-5 w-5 shrink-0 text-zinc-700"
+                  className="ml-auto h-4 w-4 shrink-0 text-zinc-700 sm:h-5 sm:w-5"
                 />
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600 shadow-sm dark:bg-zinc-900 dark:text-blue-300">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600 shadow-sm dark:bg-zinc-900 dark:text-blue-300 sm:h-14 sm:w-14">
                   <FaFileLines aria-hidden="true"  className="h-8 w-8"/>
                 </span>
                 <div className="hidden min-w-0 sm:block">

@@ -6,7 +6,7 @@ import ScrollReveal from "@/component/shared/ScrollReveal";
 export default function HomeCta() {
   return (
     <section className="px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-12">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-zinc-900 px-6 py-12 text-white shadow-xl shadow-blue-950/15 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-zinc-900 px-4 py-10 text-white shadow-xl shadow-blue-950/15 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
         
         {/* Full-width & Full-height Background Image */}
         <Image
@@ -37,7 +37,7 @@ export default function HomeCta() {
               <FaShieldHalved aria-hidden="true" className="h-3.5 w-3.5" />
               Data work, made simpler
             </span>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl text-white [text-shadow:_0_2px_8px_rgba(0,0,0,0.8)]">
+            <h2 className="mt-5 text-balance text-3xl font-bold tracking-tight text-white [text-shadow:_0_2px_8px_rgba(0,0,0,0.8)] sm:text-4xl">
               Ready to get more from your data?
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-zinc-100 sm:text-base [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)] font-medium">
@@ -56,14 +56,14 @@ export default function HomeCta() {
           >
             <Link
               href="/data-extract?mode=url"
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-blue-900 transition-all shadow-md hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-blue-900 transition-all shadow-md hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 sm:w-auto"
             >
               <FaLink aria-hidden="true" className="h-4 w-4" />
               Extract from URL
             </Link>
             <Link
               href="/data-extract?mode=image"
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-white/60 bg-blue-950/60 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-blue-900/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-white/60 bg-blue-950/60 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-blue-900/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-900 sm:w-auto"
             >
               <FaImage aria-hidden="true" className="h-4 w-4" />
               Extract from image
